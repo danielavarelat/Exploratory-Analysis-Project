@@ -1,0 +1,10 @@
+library(ggplot2)
+library(dplyr)
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+
+BALT$year <- as.factor(BALT$year)
+BALT$type <- as.factor(BALT$type)
+ggplot(BALT, aes(x=type, y=Emissions, fill=year)) + geom_col(position = "dodge")
+dev.copy(png,'plot3.png')
+dev.off()
